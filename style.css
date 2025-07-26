@@ -1,0 +1,264 @@
+/*
+Project Name: SPA
+ - Author: Hamit Mizrak
+ - GitHub: https://github.com/hamitmizrak/2025_Ecodation_Frontend2
+ - Date: 2025
+ - Description: This is a single-page application (SPA) project that includes various features such as user registration, login, and more. It is built using HTML, CSS, and JavaScript.
+ - Technologies: HTML, CSS, JavaScript, Bootstrap, Font Awesome
+    - License: MIT License
+    - Version: 1.0.0
+    - Last Updated: 2025-01-01
+    - Features:
+      - User registration and login functionality
+      - Responsive design using Bootstrap
+      - Icons from Font Awesome
+      - Modal dialogs for user interactions
+      - Navigation bar with links to different sections
+      - Custom styles in style.css
+      - Utility links in useful_links.txt
+      - Git integration for version control
+    - Usage: Clone the repository and open index.html in a web browser to view the application.
+    - Installation:
+      1. Clone the repository: `git clone https://github.com/hamitmizrak/2025_Ecodation_Frontend2`
+        2. Open `index.html` in a web browser.
+    - Contributing: Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+    - Contact: For any questions or issues, please contact Hamit Mizrak at hamitmizrak@gmail.com
+ */
+
+/* ################################################################################ */
+/* ~~~~  ROOT   ~~~~ */
+:root {
+  --primary-color: #00c2cb;
+  --background-color: #1c1c1c;
+  --text-color: #fff;
+  --white-color: #fff;
+  --danger-color: #e74c3c;
+  --secondary-color: #3498db;
+  --accent-color: #8e44ad;
+  --dark-color: #000;
+  --button-radius: 8px;
+  --customise-font-family: 'Segoe UI', sans-serif;
+}
+
+/* ################################################################################ */
+/* ~~~~  COMMON PROPERTIES   ~~~~ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--customise-font-family);
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  background: linear-gradient(to right, #564f4f, #1c1c1c);
+  color: var(--text-color);
+  position: relative; /* Ensures body takes full height */
+  line-height: 1.6; /* Improves readability */
+  overflow-x: hidden; /* Prevents hidden horizontal scroll */
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem; */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+i {
+  font-size: 1rem;
+  color: #fff;
+  animation: 0.5s ease-in-out infinite alternate fadeIn;
+  animation: 3s ease-in-out fadeIn;
+}
+
+i:hover {
+  color: #d62d2d;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* ################################################################################ */
+/* ~~~~  LINE CLAMP   ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~  NAVBAR FIRST   ~~~~ */
+#navbar_first {
+  background-color: var(--dark-color);
+  color: var(--text-color);
+  padding: 0.5rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  max-height: 3rem;
+  opacity: 0.8;
+}
+
+#navbar_first ul li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+/* ~~~~  NAVBAR_FIRST LEFT    ~~~~ */
+
+#navbar_first ul li a {
+  color: var(--text-color);
+  font-weight: 100;
+  transition: color 0.3s ease;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+#navbar_first ul li a:hover {
+}
+/* ~~~~  NAVBAR_FIRST RIGHT    ~~~~ */
+#navbar_first_right ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 50% 50%;
+}
+
+/* ################################################################################ */
+/* ~~~~ NAVBAR SECOND    ~~~~ */
+#navbar_second {
+  background-color: var(--dark-color);
+  color: var(--text-color);
+  padding: 0.5rem;
+  position: fixed;
+  width: 100%;
+  max-height: 4rem;
+  top: 3rem; /* Adjusted to avoid overlap with the first navbar */
+  z-index: 999;
+  opacity: 0.8;
+}
+
+#navbar_second > .container > .collapse > a {
+  color: #e33e3e;
+}
+
+/* ~~~~  Logo   ~~~~ */
+#logo_id {
+  border-radius: 35% 10%;
+  width: 5rem;
+  transition: all 1s ease;
+}
+
+#logo_id:hover {
+  border-radius: 35% 10%;
+  width: 5.2rem;
+}
+
+/* ~~~~  Search   ~~~~ */
+#search_id {
+  transition: width 1s ease-in-out;
+}
+
+#search_id:focus {
+  width: 25rem;
+  -webkit-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+}
+
+/* ~~~~  Dark Mode   ~~~~ */
+#dark_mode {
+}
+
+/* ################################################################################ */
+/* ~~~~  HEADER   ~~~~ */
+#header_id {
+  background-image: url('./images/header2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-position: 50% 50%;
+  height: 80vh;
+  padding-top: 8rem;
+  z-index: -1;
+  margin-top: 6.9rem;
+}
+
+#header_id h1 {
+  color: var(--white-color);
+  text-transform: uppercase;
+}
+
+#header_id h4 {
+  color: var(--white-color);
+  text-transform: capitalize;
+}
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
+
+/* ################################################################################ */
+/* ~~~~     ~~~~ */
