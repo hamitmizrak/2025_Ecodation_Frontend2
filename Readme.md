@@ -34,17 +34,170 @@
 
 [GitHub Address](https://github.com/hamitmizrak/2025_Ecodation_Frontend2.git)
 
+---
+
+# Git
+
 ```sh
+git init
+git add .
+git commit -m "all data"
+git remote add origin GİTHUB_URL
+git push -u origin main
 
 ```
 
 ---
 
-## NPM
+## VERSION
 
 ```sh
 git -v
 npm -v
+node -v
+```
+
+## NPM
+
+```sh
+#### Proje bilgisi
+#### Kurulu paketleri listeler.
+npm list
+
+#### Sadece ana paketleri (alt bağımlılıkları göstermez).
+npm list --depth=0
+
+#### Güncellenmesi gereken paketleri gösterir.
+npm outdated
+
+#### Paket kurma
+npm install paket_adi
+
+#### Paketleri package.json’a kaydetmeden kurmak
+npm install paket_adi --no-save
+
+####  Paket kaldırmak
+npm uninstall paket_adi
+
+####  Paket güncellemek
+npm update paket_adi
+
+####  Tüm paketleri güncellemek:
+npm update
+
+
+#### Geliştirme bağımlılığı olarak kurmak
+npm install parcel --save-dev
+npm install parcel -D
+
+#### Paketleri temizlemek:
+rm -rf node_modules
+npm install
+
+
+#### Paket önbelleğini temizlemek:
+npm cache clean --force
+
+
+#### Küresel (global) kurulum:
+npm install -g live-server
+npm view paket_adi versions
+
+
+#### Paket aramak:
+npm search paket_adi
+```
+
+---
+
+## Hızlıca Projeyi ayağa kaldırmak istersek yani `npm init -y` yazmadan terminal üzerinden projeyi hızlıca ayağa kaldırmak için kullanılır.
+
+```sh
+#### vite
+#### Daha modern ve hızlı:
+npm create vite@latest
+npm create vite@latest -y
+```
+
+---
+
+## Gerekli Kütüphaneler
+
+```sh
+#### DİKKKKKATTTTT
+#### Artık CDN yerine node_modules/@fortawesome/fontawesome-free/css/all.min.css kullanabilirsin.
+
+
+#### Tek seferde birden fazla kütüphane eklemek
+npm install bootstrap jquery @popperjs/core wowjs animate.css sweetalert
+
+#### Bootstrap
+npm install bootstrap @popperjs/core
+Bootstrap5 Kullanımı:
+<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+<script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+```
+
+---
+
+## Gerekli Kütüphaneler (İleri düzey)
+
+```sh
+#### AOS (Animate On Scroll) Local
+#### Scroll ile animasyon tetiklemek için wow.js alternatifi.
+npm install aos             (local ve canlı ortam ve proje için gerekli)
+
+npm install aos --save      (local ve canlı ortam ve proje için gerekli)
+npm install aos --save-dev  (local ve geliştirme ortam ve proje için gerekli)
+npm install aos -g          (glocal ve  proje için gerekli)
+
+
+#### DİKKKKKATTTTT
+#### Artık CDN yerine node_modules/@fortawesome/fontawesome-free/css/all.min.css kullanabilirsin.
+
+#### Font Awesome (npm ile)
+npm install @fortawesome/fontawesome-free
+
+#### Statik sayfanı modern bir yapıya taşımak istiyorsan:
+#### parcel Hızlı bundler:
+npm install --save-dev parcel
+
+#### sass
+#### CSS’i SCSS ile yazmak:
+npm install sass
+
+#### eslint / prettier
+####  Kodun temiz ve düzenli olması için:
+npm install --save-dev eslint prettier
+
+#### Küçük Proje İyileştirme Paketleri
+#### browser-sync (live reload)
+npm install --save-dev browser-sync
+
+#### axios
+#### API istekleri için:
+npm install axios
+
+#### lite-server
+#### Sadece HTML/JS/CSS projelerini çalıştırmak için:
+npm install --save-dev lite-server
+
+#### gh-pages
+#### Projeyi GitHub Pages’a deploy etmek için:
+npm install gh-pages
+
+
+```
+
+---
+
+## Project Running
+
+```sh
+npm run start
+VEYA
+npm start
 
 ```
 
