@@ -256,98 +256,77 @@ i:hover {
 
 /* Sağ taraf (arama + dark mode) hizalama */
 .nav-actions {
-  display: flex; /* İçeriği yatayda yan yana yerleştir */
-  flex-direction: row; /* Yön: yatay */
-  align-items: center; /* Dikey ortalama */
-  gap: 0.75rem; /* Aralarında 0.75rem boşluk bırak */
-  flex-wrap: nowrap; /* Büyük ekranlarda satır kırılmasını engelle */
-}
-
-/* Küçük ekranlarda alt alta gelsin */
-@media (max-width: 768px) {
-  .nav-actions {
-    flex-direction: column; /* Küçük ekranda elemanlar alt alta */
-    align-items: stretch; /* Elemanları tam genişlikte hizala */
-    width: 100%; /* Tam genişlik */
-    margin-top: 1rem; /* Üstten 1rem boşluk */
-  }
-  .nav-actions .dark-mode-btn,
-  .nav-actions .search-form {
-    width: 100%; /* Küçük ekranda buton ve arama tam genişlikte */
-  }
+  display: flex; /* İçindeki elemanları (dark mode butonu ve arama kutusu) yan yana getirir */
+  flex-direction: row; /* Flex yönünü yatay (satır) yapar */
+  align-items: center; /* Dikey eksende ortalar */
+  gap: 0.75rem; /* Elemanlar arasında 0.75rem boşluk bırakır */
+  flex-wrap: nowrap; /* Elemanların satır kırmasını engeller, tek satırda kalmasını sağlar */
 }
 
 /* Dark Mode Butonu */
 .dark-mode-btn {
-  background: linear-gradient(135deg, #3a3d98, #2d2f6d); /* Koyu mavi degrade arka plan */
-  color: #fff; /* Beyaz yazı ve ikon */
-  border: none; /* Kenarlığı kaldır */
-  border-radius: 6px; /* Köşeleri yuvarlat */
-  padding: 0.45rem 0.7rem; /* İç boşluklar */
-  display: flex; /* İçerik (ikon) ortalamak için flex */
-  align-items: center; /* Dikey ortalama */
-  justify-content: center; /* Yatay ortalama */
-  font-size: 1.1rem; /* İkon boyutu */
-  cursor: pointer; /* Üzerine gelindiğinde imleç el olur */
-  transition: all 0.3s ease; /* Geçiş efektleri */
-  max-width: 18%; /* Butonun genişliğini sınırlamak için */
+  background: linear-gradient(135deg, #3a3d98, #2d2f6d); /* Lacivert tonlarda degrade arkaplan */
+  color: #fff; /* Yazı ve ikon rengini beyaz yapar */
+  border: none; /* Kenarlıkları kaldırır */
+  border-radius: 6px; /* Köşeleri yuvarlatır */
+  padding: 0.45rem 0.7rem; /* İç boşluk (üst-alt 0.45rem, sağ-sol 0.7rem) */
+  display: flex; /* İçeriğini (ikon) flex ile hizalamak için kullanılır */
+  align-items: center; /* Dikeyte ortalama */
+  justify-content: center; /* Yatayda ortalama */
+  font-size: 1.1rem; /* Butondaki ikonun boyutunu büyütür */
+  cursor: pointer; /* Üzerine gelindiğinde fare işaretçisini el simgesine çevirir */
+  transition: all 0.3s ease; /* Renk ve büyüme değişikliklerinde yumuşak geçiş sağlar */
 }
 .dark-mode-btn:hover {
-  background: linear-gradient(135deg, #5053c7, #373977); /* Hover olunca degrade rengi değiştir */
-  transform: scale(1.08); /* Hover olunca %8 büyüt */
+  background: linear-gradient(
+    135deg,
+    #5053c7,
+    #373977
+  ); /* Hover olduğunda arka planın rengini değiştirir */
+  transform: scale(1.08); /* Hover olduğunda butonu %8 büyütür */
 }
 
 /* Arama kutusu kapsayıcısı */
 .search-container {
-  position: relative; /* İçindeki butonu absolute ile konumlandırmak için referans alanı */
-  width: 220px; /* Arama kutusunun toplam genişliği */
+  position: relative; /* İçindeki butonu absolute ile konumlandırmak için referans alan */
+  width: 220px; /* Varsayılan genişlik */
+  max-width: 350px; /* En fazla 350px genişler */
+  transition: width 0.4s ease; /* Genişlik değişimi olduğunda yumuşak animasyon uygular */
+}
+
+/* Focus olduğunda kapsayıcı genişlesin (responsive) */
+.search-container:focus-within {
+  width: min(
+    90vw,
+    350px
+  ); /* Input focus olduğunda container genişler:
+                                      Ekran genişliğinin %90’ına kadar, ama max 350px */
 }
 
 /* Arama kutusunun input alanı */
 .search-container input {
   width: 100%; /* Kapsayıcı genişliğini tamamen doldurur */
-  padding-right: 80px; /* Sağda butona yer açmak için iç boşluk bırak */
-  border-radius: 6px; /* Köşeleri yuvarlat */
+  padding-right: 80px; /* Sağ tarafta butonun üzerine yazı taşmaması için boşluk bırakır */
+  border-radius: 6px; /* Köşeleri yuvarlatır */
 }
 
 /* Arama butonunun input içinde sağa yerleşmesi */
 .search-container .search-button {
-  position: absolute; /* Kapsayıcıya göre konumlandırma */
-  top: 0; /* Üstten hizala */
-  right: 0; /* Sağdan hizala */
-  height: 100%; /* Input'un yüksekliği ile aynı olsun */
-  border: none; /* Kenarlığı kaldır */
-  background-color: var(--secondary-color); /* Tema renginde arka plan */
-  color: #fff; /* Yazı rengini beyaz yap */
-  padding: 0 15px; /* Sağ ve sol iç boşluk */
-  border-top-right-radius: 6px; /* Sağ üst köşeyi yuvarlat */
-  border-bottom-right-radius: 6px; /* Sağ alt köşeyi yuvarlat */
-  cursor: pointer; /* Üzerine gelindiğinde el simgesi */
-  transition: background-color 0.3s ease; /* Hover efektinde renk geçişi */
+  position: absolute; /* Butonu search-container içinde mutlak (absolute) konumlandırır */
+  top: 0; /* Kapsayıcının üst kenarına hizalar */
+  right: 0; /* Kapsayıcının sağ kenarına hizalar */
+  height: 100%; /* Input alanının yüksekliğiyle aynı olur */
+  border: none; /* Kenarlıkları kaldırır */
+  background-color: var(--secondary-color); /* Tema değişkeninden ikinci renk: butonun arkaplanı */
+  color: #fff; /* Buton metnini beyaz yapar */
+  padding: 0 15px; /* Butonun iç boşluğu (sağ-sol 15px) */
+  border-top-right-radius: 6px; /* Sağ üst köşeyi yuvarlatır (input ile bütün görünmesi için) */
+  border-bottom-right-radius: 6px; /* Sağ alt köşeyi yuvarlatır */
+  cursor: pointer; /* Üzerine gelindiğinde imleci el simgesine çevirir */
+  transition: background-color 0.3s ease; /* Arka plan rengi değişiminde yumuşak geçiş sağlar */
 }
 .search-container .search-button:hover {
-  background-color: #054282; /* Hover olduğunda koyu mavi ton */
-}
-
-/* Küçük ekranlarda da yan yana olsun */
-@media (max-width: 768px) {
-  .nav-actions {
-    flex-direction: row; /* Küçük ekranlarda da elemanlar yan yana */
-    flex-wrap: nowrap; /* Satır kırma yok */
-    align-items: center; /* Dikey hizalama */
-    justify-content: flex-start; /* Yatayda sola hizala */
-    gap: 0.5rem; /* Aralarında boşluk */
-    width: 100%; /* Tüm genişliği kaplasın */
-    margin-top: 0.5rem; /* Üstten biraz boşluk */
-  }
-
-  .nav-actions .dark-mode-btn {
-    flex: 0 0 auto; /* Dark mode butonu sabit genişlikte olsun */
-  }
-
-  .nav-actions .search-form {
-    flex: 1; /* Arama formu kalan tüm genişliği kaplasın */
-  }
+  background-color: #054282; /* Üzerine gelindiğinde arka plan rengini koyu maviye çevirir */
 }
 
 /* ################################################################################ */
@@ -482,4 +461,24 @@ i:hover {
 /* ~~~~     ~~~~ */
 
 /* ################################################################################ */
-/* ~~~~     ~~~~ */
+/* ~~~~  RESPONSIVE DESIGN   ~~~~ */
+/* Küçük ekranlarda da yan yana (flex yapısı korunsun) */
+@media (max-width: 768px) {
+  .nav-actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .nav-actions .dark-mode-btn {
+    flex: 0 0 auto; /* Sabit genişlik */
+  }
+
+  .nav-actions .search-form {
+    flex: 1; /* Kalan genişliği al */
+  }
+}
