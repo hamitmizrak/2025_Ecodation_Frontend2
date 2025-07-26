@@ -16,6 +16,7 @@ npm init -y
 
 # Dosya oluştur
 touch .gitignore
+touch  index.html
 touch  style.css
 touch  template.js
 touch  README.md
