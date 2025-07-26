@@ -49,6 +49,19 @@ git push -u origin main
 
 ---
 
+# Git Clone
+
+```sh
+git clone https://github.com/hamitmizrak/2025_Ecodation_Frontend2
+cd 2025_Ecodation_Frontend2
+npm install
+VEYA
+npm i
+
+```
+
+---
+
 ## VERSION
 
 ```sh
