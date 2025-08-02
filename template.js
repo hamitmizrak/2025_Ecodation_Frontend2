@@ -1,5 +1,3 @@
-//alert("deneme")
-
 // WOW animasyon başlatma
 new WOW({
   boxClass: 'wow',
@@ -9,13 +7,34 @@ new WOW({
   live: true,
 }).init();
 
-// counterUp2 (CDN ile global window.counterUp)
+// ScrollSpy başlatma
 document.addEventListener('DOMContentLoaded', () => {
-  const counters = document.querySelectorAll('.counter');
-  counters.forEach((el) => {
-    window.counterUp(el, {
-      duration: 2000,
-      delay: 16,
+  const scrollSpy = new bootstrap.ScrollSpy(document.body, {
+    target: '#navbar_second',
+    offset: 100,
+  });
+});
+
+
+// COUNTERUP2
+document.addEventListener("DOMContentLoaded", () => {
+  const counterUp = window.counterUp.default;
+
+  const callback = (entries) => {
+    entries.forEach((entry) => {
+      const el = entry.target;
+      if (entry.isIntersecting && !el.classList.contains("counted")) {
+        counterUp(el, {
+          duration: 2000,
+          delay: 16,
+        });
+        el.classList.add("counted");
+      }
     });
+  };
+
+  const observer = new IntersectionObserver(callback, { threshold: 0.5 });
+  document.querySelectorAll(".counter").forEach((counter) => {
+    observer.observe(counter);
   });
 });

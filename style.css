@@ -69,6 +69,8 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 2rem; */
+
+  padding-top: 1.6rem; /* 3rem + 3rem (iki navbar toplamı) */
 }
 
 a {
@@ -150,8 +152,10 @@ i:hover {
   padding: 0.3rem 0.8rem; /* Üst/alt 0.3rem, sağ/sol 0.8rem boşluk */
   position: fixed; /* Sayfanın en üstünde sabitlenmiş (scroll etkilmez) */
   top: 0; /* Sayfanın en üstüne hizalanır */
+  left: 0;
+  z-index: 33000; /* navbar_second'ten daha yüksek */
   width: 100%; /* Tüm yatay genişliği kaplar */
-  z-index: 1000; /* Diğer elemanların üstünde görünür */
+
   opacity: 0.95; /* Hafif saydam görünüm */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Altında gölge efekti */
 }
@@ -205,6 +209,8 @@ i:hover {
   z-index: 999; /* Üstte görünsün (header ve içeriklerin üzerinde) */
   opacity: 0.95; /* Hafif saydam görünüm */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Altına gölge efekti */
+  left: 0;
+  z-index: 2999;
 }
 
 /* Logo resmi ayarları */
@@ -346,7 +352,8 @@ i:hover {
   background-size: cover; /* Resmi kutunun tamamını kaplayacak şekilde ölçeklendir */
   background-position: center; /* Resmi ortala */
   height: 80vh; /* Görünür alanın %80 yüksekliği */
-  margin-top: calc(3rem + 3rem); /* Üstteki 2 navbarın toplam yüksekliği kadar aşağıdan başlat */
+  /* margin-top: calc(3rem + 3rem); Üstteki 2 navbarın toplam yüksekliği kadar aşağıdan başlat */
+  margin-top: 0;
   padding-top: 2rem; /* İçeriğin üstten boşluğu */
   color: var(--white-color); /* Yazı rengini root değişkeninden beyaz al */
 }
@@ -453,29 +460,124 @@ i:hover {
 
 /* ~~~~  success rate   ~~~~ */
 /* success rate: Başarı oranları */
-#success_rate, #about{
+#success_rate {
   margin-top: 10rem;
   background-color: #fff;
   color: #3498db;
   min-height: 20rem;
 }
 
-
 #success_rate div {
   margin-top: 5rem;
 }
 
-
 /* ~~~~  newspaper  ~~~~ */
 /* newspaper */
-#newspaper{
-  min-height:45rem !important ;
+#newspaper {
+  min-height: 45rem !important ;
 }
 
 /* ~~~~  About  ~~~~ */
-/* About */
-#about_picture{
-  max-width: 10rem;
+/* ### About HAKKIMIZDA ###*/
+/* ABOUT SECTION */
+/* ### About HAKKIMIZDA ### */
+#about {
+  position: relative;
+  background-image: url('./img/about.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll; /* mobil performans için fixed yerine scroll */
+  min-height: 50rem;
+  color: #fff;
+  padding: 6rem 0;
+}
+
+#about .about-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* daha koyu */
+  z-index: 0;
+}
+
+#about .container {
+  position: relative;
+  z-index: 1;
+}
+
+#about_picture {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+#about .about-text {
+  background: rgba(255, 255, 255, 0.08); /* daha şeffaf beyaz */
+  border-radius: 12px;
+  padding: 2rem;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #f0f0f0;
+  backdrop-filter: blur(5px); /* modern tarayıcılar için cam efekti */
+}
+
+#about .about-text p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+  #about {
+    padding: 4rem 1rem;
+  }
+  #about .about-text {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* ### BLOG ###*/
+#blog {
+  position: relative;
+}
+
+#blog::before {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  bottom: 0;
+  left: 0px;
+  content: '';
+  background-image: url('./img/blog.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.92;
+}
+
+#blog .container .row .col-md-3 .card .card-body h4 {
+  color: black;
+  text-align: center;
+}
+
+#blog .col-md-3 {
+  margin-bottom: 1rem;
+}
+
+.blog_date {
+  opacity: 0.6;
+  float: right;
+  margin-top: 0.8rem;
+}
+
+/* ### MAPS###*/
+#maps iframe {
+  width: 100%;
+  height: 40rem !important;
 }
 
 /* ################################################################################ */
