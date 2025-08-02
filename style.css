@@ -494,10 +494,10 @@ i:hover {
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll; /* mobil performans için fixed yerine scroll */
-  min-height: 50rem;
+  min-height: 40rem;
   color: #fff;
   background-color: #054282;
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 #scroll_spy_about .about-overlay {
@@ -519,6 +519,8 @@ i:hover {
   max-width: 100%;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease;
+  height:37rem
 }
 
 #scroll_spy_about .about-text {
@@ -550,6 +552,7 @@ i:hover {
 /* ### BLOG ###*/
 #blog {
   position: relative;
+  background: linear-gradient(180deg, #585656, #2e2929);
 }
 
 #blog::before {
@@ -564,10 +567,10 @@ i:hover {
   background-size: cover;
   background-attachment: fixed;
   opacity: 0.92;
+  background: linear-gradient(180deg, #585656, #2e2929);
 }
 
-     
-#blog img{
+#blog img {
   height: 250px;
 }
 
@@ -653,6 +656,19 @@ footer {
 
 .subscribe-form input[type='email']::placeholder {
   color: rgb(199, 225, 30);
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+.social-icons a {
+  color: #bbb;
+  margin-right: 10px;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #00c2cb;
 }
 
 /* Alt Kısım */
