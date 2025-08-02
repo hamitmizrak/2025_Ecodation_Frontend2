@@ -418,28 +418,98 @@ i:hover {
 
 /* ################################################################################ */
 /* ~~~~  FOOTER   ~~~~ */
+footer {
+  background-color: #000;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+}
+
+#footer-logo {
+  max-width: 150px;
+  margin-bottom: 15px;
+}
+
+.footer-company-text {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.footer-column h3 {
+  margin-bottom: 15px;
+  font-size: 35px;
+}
+
+.footer-link a {
+  color: #9092db;
+}
+
+.footer-link a:hover {
+  color: #3136d4;
+}
+
+/* form */
+.subscribe-form input[type='email'] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4e53d7;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.subscribe-form input[type='email']::placeholder {
+  color: rgb(199, 225, 30);
+}
+
+/* Alt Kısım */
+.footer-bottom{
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid #333;
+  font-size: 18px;
+  background-color: #181a23;
+  
+}
 
 /* ################################################################################ */
 /* ~~~~   BACK TO TOP  ~~~~ */
-#back_top_id i{
-  position:fixed;
+#back_top_id i {
+  position: fixed;
   right: 0;
-  bottom:0;
-  width: 3rem!important;
+  bottom: 0;
+  width: 3rem !important;
   height: 2.8rem;
-  color:rgb(68, 255, 0);
+  color: rgb(68, 255, 0);
   background-color: #000;
   font-size: 2.1rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   transition: all 2s;
-  padding-top:0.3rem
+  padding-top: 0.3rem;
 }
 
-#back_top_id i:hover{
-  color:#000;
+#back_top_id i:hover {
+  color: #000;
   background-color: rgb(68, 255, 0);
-  opacity: .9;
+  opacity: 0.9;
 }
 
 /* ################################################################################ */
