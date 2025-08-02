@@ -162,6 +162,7 @@ i:hover {
   transition: color 0.3s ease; /* Renk değişimi için yumuşak geçiş efekti */
 }
 
+/* first navbar üstüne geldiğimde */
 #navbar_first .nav .nav-link:hover {
   color: var(--secondary-color); /* Üzerine gelince secondary renk */
 }
