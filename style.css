@@ -352,7 +352,7 @@ i:hover {
   background-image: url('./images/header2.jpg'); /* Arka plan resmi */
   background-size: cover; /* Resmi kutunun tamamını kaplayacak şekilde ölçeklendir */
   background-position: center; /* Resmi ortala */
-  height: 80vh; /* Görünür alanın %80 yüksekliği */
+  height: 100vh; /* Görünür alanın %80 yüksekliği */
   /* margin-top: calc(3rem + 3rem); Üstteki 2 navbarın toplam yüksekliği kadar aşağıdan başlat */
   margin-top: 0;
   padding-top: 2rem; /* İçeriğin üstten boşluğu */
@@ -459,11 +459,16 @@ i:hover {
   border-radius: 2px;
 }
 
+#scroll_spy_works {
+  min-height: 1rem !important;
+}
+
 /* ~~~~  success rate   ~~~~ */
 /* success rate: Başarı oranları */
 #success_rate {
   margin-top: 10rem;
   background-color: #fff;
+  background-color: #054282;
   color: #3498db;
   min-height: 20rem;
 }
@@ -491,6 +496,7 @@ i:hover {
   background-attachment: scroll; /* mobil performans için fixed yerine scroll */
   min-height: 50rem;
   color: #fff;
+  background-color: #054282;
   padding: 6rem 0;
 }
 
@@ -558,6 +564,11 @@ i:hover {
   background-size: cover;
   background-attachment: fixed;
   opacity: 0.92;
+}
+
+     
+#blog img{
+  height: 250px;
 }
 
 #blog .container .row .col-md-3 .card .card-body h4 {
