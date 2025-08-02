@@ -179,16 +179,16 @@
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       role="dialog"
-      aria-labelledby="modalTitleId"
+      aria-labelledby="registerModalLabel"
       aria-hidden="true"
     >
       <div
-        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
         role="document"
       >
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+            <h5 class="modal-title" id="registerModalLabel">Kayıt Ol</h5>
             <button
               type="button"
               class="btn-close"
@@ -196,17 +196,78 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">Body</div>
+
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <form id="registerForm">
+              <!-- Ad Soyad -->
+              <div class="mb-3">
+                <label for="fullname" class="form-label">Ad Soyad</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullname"
+                  placeholder="Adınızı ve soyadınızı girin"
+                  required
+                />
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="ornek@mail.com"
+                  required
+                />
+              </div>
+
+              <!-- Şifre -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Şifre</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Şifrenizi girin"
+                  required
+                />
+              </div>
+
+              <!-- Şifre Tekrar -->
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Şifre Tekrar</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  placeholder="Şifrenizi tekrar girin"
+                  required
+                />
+              </div>
+
+              <!-- Kullanım Koşulları -->
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="terms" required />
+                <label class="form-check-label" for="terms">
+                  Kullanım koşullarını kabul ediyorum
+                </label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Modal Footer -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            <button type="submit" form="registerForm" class="btn btn-primary">Kayıt Ol</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- LOGIN Trigger Modal -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div
       class="modal fade"
       id="loginId"
@@ -214,16 +275,16 @@
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       role="dialog"
-      aria-labelledby="modalTitleId"
+      aria-labelledby="loginModalLabel"
       aria-hidden="true"
     >
       <div
-        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
         role="document"
       >
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+            <h5 class="modal-title" id="loginModalLabel">Giriş Yap</h5>
             <button
               type="button"
               class="btn-close"
@@ -231,14 +292,51 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">Body</div>
+
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <form id="loginForm">
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  placeholder="ornek@mail.com"
+                  required
+                />
+              </div>
+
+              <!-- Şifre -->
+              <div class="mb-3">
+                <label for="loginPassword" class="form-label">Şifre</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  placeholder="Şifrenizi girin"
+                  required
+                />
+              </div>
+
+              <!-- Beni Hatırla -->
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="rememberMe" />
+                <label class="form-check-label" for="rememberMe">Beni hatırla</label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Modal Footer -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            <button type="submit" form="loginForm" class="btn btn-primary">Giriş Yap</button>
           </div>
         </div>
       </div>
     </div>
+
     <!-- end navbar First -->
 
     <!-- NAVBAR SECOND -->
