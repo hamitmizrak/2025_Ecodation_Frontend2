@@ -1,7 +1,6 @@
-// template.js
-import counterUp from 'counterup2';
+//alert("deneme")
 
-// WOW.js başlatma
+// WOW animasyon başlatma
 new WOW({
   boxClass: 'wow',
   animateClass: 'animate__animated',
@@ -10,13 +9,11 @@ new WOW({
   live: true,
 }).init();
 
+// counterUp2 (CDN ile global window.counterUp)
 document.addEventListener('DOMContentLoaded', () => {
-  // Sayaç elemanlarını seç
   const counters = document.querySelectorAll('.counter');
-
-  // counterup2 kendi IntersectionObserver'i ile görünür olunca otomatik çalışır
   counters.forEach((el) => {
-    counterUp(el, {
+    window.counterUp(el, {
       duration: 2000,
       delay: 16,
     });

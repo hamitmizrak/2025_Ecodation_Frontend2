@@ -132,6 +132,13 @@ i:hover {
   -webkit-box-orient: vertical;
 }
 
+.line-clamp25 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 25;
+  -webkit-box-orient: vertical;
+}
+
 /* ################################################################################ */
 /* ~~~~  NAVBAR FIRST   ~~~~ */
 /* ##################################################### */
@@ -416,6 +423,7 @@ i:hover {
 /* ################################################################################ */
 /* ~~~~  MAIN   ~~~~ */
 
+/* ~~~~  Works   ~~~~ */
 /* Works : Çalışmalar */
 .customize_heading {
   display: block;
@@ -429,6 +437,7 @@ i:hover {
   position: relative; /* Alt çizgi için gerekli */
 }
 
+/* ~~~~  Başlık Alt çizgi   ~~~~ */
 /* Başlık Alt çizgi */
 .customize_heading::after {
   content: '';
@@ -442,17 +451,33 @@ i:hover {
   border-radius: 2px;
 }
 
+/* ~~~~  success rate   ~~~~ */
 /* success rate: Başarı oranları */
-#success_rate {
+#success_rate, #about{
   margin-top: 10rem;
   background-color: #fff;
   color: #3498db;
   min-height: 20rem;
 }
 
+
 #success_rate div {
   margin-top: 5rem;
 }
+
+
+/* ~~~~  newspaper  ~~~~ */
+/* newspaper */
+#newspaper{
+  min-height:45rem !important ;
+}
+
+/* ~~~~  About  ~~~~ */
+/* About */
+#about_picture{
+  max-width: 10rem;
+}
+
 /* ################################################################################ */
 /* ~~~~  FOOTER   ~~~~ */
 footer {
