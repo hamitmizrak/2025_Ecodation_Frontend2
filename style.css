@@ -86,7 +86,7 @@ button {
 
 i {
   font-size: 1rem; /* İkon boyutunu 1rem yapar */
-  color: #fff; /* İkon rengini beyaz yapar */
+
   animation: 0.5s ease-in-out infinite alternate fadeIn; /* İlk animasyon (tekrarlı fade-in) */
   animation: 3s ease-in-out fadeIn; /* İkinci animasyon: 3 saniyede bir fade-in (ilkini geçersiz kılar) */
 }
@@ -416,6 +416,43 @@ i:hover {
 /* ################################################################################ */
 /* ~~~~  MAIN   ~~~~ */
 
+/* Works : Çalışmalar */
+.customize_heading {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 40px 0 2rem 0;
+  text-transform: uppercase;
+  color: #5c8cda;
+  position: relative; /* Alt çizgi için gerekli */
+}
+
+/* Başlık Alt çizgi */
+.customize_heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* Başlık ile çizgi arasındaki mesafe */
+  left: 50%; /* Ortalamak için */
+  transform: translateX(-50%);
+  width: 80px; /* Çizgi uzunluğu */
+  height: 4px; /* Çizgi kalınlığı */
+  background-color: #eef43a; /* Çizgi rengi */
+  border-radius: 2px;
+}
+
+/* success rate: Başarı oranları */
+#success_rate {
+  margin-top: 10rem;
+  background-color: #fff;
+  color: #3498db;
+  min-height: 20rem;
+}
+
+#success_rate div {
+  margin-top: 5rem;
+}
 /* ################################################################################ */
 /* ~~~~  FOOTER   ~~~~ */
 footer {
@@ -480,13 +517,12 @@ footer {
 }
 
 /* Alt Kısım */
-.footer-bottom{
+.footer-bottom {
   text-align: center;
   padding: 15px;
   border-top: 1px solid #333;
   font-size: 18px;
   background-color: #181a23;
-  
 }
 
 /* ################################################################################ */
