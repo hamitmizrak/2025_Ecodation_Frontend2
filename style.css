@@ -51,6 +51,7 @@ Project Name: SPA
 
 html {
   font-size: 20px; /* Sayfanın temel font boyutunu 20px olarak ayarlar (rem için referans) */
+  scroll-padding-top: 7.5rem;
 }
 
 body {
@@ -473,7 +474,7 @@ i:hover {
 
 /* ~~~~  newspaper  ~~~~ */
 /* newspaper */
-#newspaper {
+#scroll_spy_newspaper {
   min-height: 45rem !important ;
 }
 
@@ -481,7 +482,7 @@ i:hover {
 /* ### About HAKKIMIZDA ###*/
 /* ABOUT SECTION */
 /* ### About HAKKIMIZDA ### */
-#about {
+#scroll_spy_about {
   position: relative;
   background-image: url('./img/about.webp');
   background-size: cover;
@@ -493,7 +494,7 @@ i:hover {
   padding: 6rem 0;
 }
 
-#about .about-overlay {
+#scroll_spy_about .about-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -503,7 +504,7 @@ i:hover {
   z-index: 0;
 }
 
-#about .container {
+#scroll_spy_about .container {
   position: relative;
   z-index: 1;
 }
@@ -514,7 +515,7 @@ i:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-#about .about-text {
+#scroll_spy_about .about-text {
   background: rgba(255, 255, 255, 0.08); /* daha şeffaf beyaz */
   border-radius: 12px;
   padding: 2rem;
@@ -524,7 +525,7 @@ i:hover {
   backdrop-filter: blur(5px); /* modern tarayıcılar için cam efekti */
 }
 
-#about .about-text p {
+#scroll_spy_about .about-text p {
   margin-bottom: 1rem;
   text-align: justify;
 }
