@@ -277,10 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
 // -----------------------------------------------------------
 /* ~~~~ FOOTER YEAR
 /* YEAR */
