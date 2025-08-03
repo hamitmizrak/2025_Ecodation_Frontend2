@@ -119,7 +119,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "terminal.integrated.enableMultiLinePasteWarning": false,
-  "terminal.integrated.fontSize": 27,
+  "terminal.integrated.fontSize": 23,
   "workbench.startupEditor": "none",
   "git.openRepositoryInParentFolders": "always",
   "terminal.external.windowsExec": "C:\\Program Files\\Git\\bin",
@@ -134,5 +134,8 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Default Dark+"
+  "workbench.colorTheme": "Default Dark+",
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }
