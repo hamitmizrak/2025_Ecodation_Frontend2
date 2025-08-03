@@ -50,7 +50,7 @@ Project Name: SPA
 }
 
 html {
-  font-size: 20px; /* Sayfanın temel font boyutunu 20px olarak ayarlar (rem için referans) */
+  font-size: 15px; /* Sayfanın temel font boyutunu 20px olarak ayarlar (rem için referans) */
   scroll-padding-top: 7.5rem;
 }
 
@@ -156,9 +156,9 @@ i:hover {
   left: 0;
   z-index: 33000; /* navbar_second'ten daha yüksek */
   width: 100%; /* Tüm yatay genişliği kaplar */
-
   opacity: 0.95; /* Hafif saydam görünüm */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Altında gölge efekti */
+ 
 }
 
 /* Soldaki Register/Login linkleri */

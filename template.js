@@ -7,7 +7,6 @@ Project name: jquery with web design
 - Summary     : 
 */
 
-const { default: Swal } = require("sweetalert2");
 
 /*
 JS Variable
@@ -22,80 +21,94 @@ let,const  ==> Local
 /* ~~~~ RÊGISTER~~~~ */
 /* RÊGISTER */
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Form elementini id ile seçiyoruz
   const registerForm = document.getElementById('registerForm');
 
-  // Conditional
   if (registerForm) {
+    const fields = [
+      document.getElementById('fullname'),
+      document.getElementById('email'),
+      document.getElementById('password'),
+      document.getElementById('confirmPassword'),
+      document.getElementById('terms'),
+    ];
+
+
+    // Hata temizleme fonksiyonu
+    const clearError = (field) => {
+      field.classList.remove('is-invalid');
+      const feedback = field.parentElement.querySelector('.invalid-feedback');
+      if (feedback) feedback.textContent = '';
+    };
+
+    // Alan değiştiğinde (kullanıcı yazarken veya seçim yaparken) hatayı temizle
+    fields.forEach((field) => {
+      const eventType = field.type === 'checkbox' ? 'change' : 'input';
+      field.addEventListener(eventType, () => clearError(field));
+    });
+
     registerForm.addEventListener('submit', (event) => {
-      // Forumun normal submit olmasını engellemek
       event.preventDefault();
 
-      // Form varsa (sayfada bulunursa) dinleyiciyi ekliyoruz
-      // Form elemanları alacağım.
-      const fullName = document.getElementById('fullName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const confirmPassword = document.getElementById('confirmPassword').value.trim();
-      const termChecked = document.getElementById('terms').checked;
+      // Tüm alanları sıfırla
+      fields.forEach((f) => clearError(f));
 
-      // 3) Hataları bir dizi içinde toplayacağız
-      // Hata mesajları için tutmak dizi([])
-      const errors = [];
+      let hasError = false;
 
-      // Ad ve Soyad
-      // Ad Soyad en az 3 karakter olmalı
-      if (fullName.length < 3) {
-        errors.push('Ad veya soyad en az 3 karakter oalcaktır.');
+      const fullname = document.getElementById('fullname');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirmPassword');
+      const terms = document.getElementById('terms');
+
+      // Ad Soyad
+      if (fullname.value.trim().length < 3) {
+        fullname.classList.add('is-invalid');
+        fullname.parentElement.querySelector('.invalid-feedback').textContent =
+          'Ad Soyad en az 3 karakter olmalıdır.';
+        hasError = true;
       }
 
       // Email
-      // Email formatını regex ile kontrol ediyoruz
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        errors.push('Geçerli bir email adresi giriniz');
+      if (!emailPattern.test(email.value.trim())) {
+        email.classList.add('is-invalid');
+        email.parentElement.querySelector('.invalid-feedback').textContent =
+          'Geçerli bir e-posta adresi giriniz.';
+        hasError = true;
       }
 
-      // Password
-      // Şifre uzunluğu
-      if (password.length < 6) {
-        errors.push('Şifre en az 7 karakterli olmalıdır');
+      // Şifre
+      if (password.value.trim().length < 6) {
+        password.classList.add('is-invalid');
+        password.parentElement.querySelector('.invalid-feedback').textContent =
+          'Şifre en az 6 karakter olmalıdır.';
+        hasError = true;
       }
 
-      // Confirm Password
-      // Şifre tekrar kontrolü
-      if (password !== confirmPassword) {
-        errors.push('şifreler eşlemişmiyor');
+      // Şifre tekrar
+      if (password.value.trim() !== confirmPassword.value.trim()) {
+        confirmPassword.classList.add('is-invalid');
+        confirmPassword.parentElement.querySelector('.invalid-feedback').textContent =
+          'Şifreler eşleşmiyor.';
+        hasError = true;
       }
 
-      // Checked
-      // Kullanım koşulları onayı
-      if (!termChecked) {
-        errors.push('kullanım koşullarını kabul etmediniz.');
+      // Kullanım koşulları
+      if (!terms.checked) {
+        terms.classList.add('is-invalid');
+        terms.parentElement.querySelector('.invalid-feedback').textContent =
+          'Kullanım koşullarını kabul etmelisiniz.';
+        hasError = true;
       }
 
-      // Hataları kontrol et
-      if (errors.length > 0) {
-        // Sweetalert2 ile hata mesajını göster
-        Swal.fire({
-          title:'Form Hataları',
-          html: errors.join('<br>'), // satırları <br> ile ayrık
-          icon : 'error',
-          confirmButtonText: 'Tamam'
-        })
-      }else{
-        // Sweetalert2 ile başarı mesajını göster
-        Swal.fire({
-          title: 'Başarılı',
-          text: 'Kayıt işlemi başarılı',
-          icon: 'success',
-          confirmButtonText: 'Tamam',
-        });
+      if (!hasError) {
+        alert('Kayıt başarılı!');
+        registerForm.reset();
       }
-      // 4) Sonuçları kontrol et
     });
   }
 });
+
 
 /* ~~~~ RÊGISTER~~~~ */
 /* RÊGISTER */
