@@ -83,8 +83,18 @@ $(document).ready(function () {});
 // -----------------------------------------------------------
 
 // -----------------------------------------------------------
-/* ~~~~ JQUERY SEARCH ~~~~ */
-/* SEARCH */
+/* ~~~~ FOOTER YEAR
+/* YEAR */
+// Arrow Function  ()=>{}
+document.addEventListener('DOMContentLoaded', () => {
+  const currentYear = new Date().getFullYear();
+  // alert(currentYear);
+  // console.log(currentYear);
+  const footerDate = document.getElementById('footer_year');
+  if (footerDate) {
+    footerDate.textContent = ` ${currentYear} ©️ Bütün haklar saklıdır`;
+  }
+});
 
 // -----------------------------------------------------------
 // -----------------------------------------------------------
