@@ -7,6 +7,12 @@ Project name: jquery with web design
 - Summary     : 
 */
 
+/*
+JS Variable
+var ==> Global
+let,const  ==> Local
+*/
+
 // -----------------------------------------------------------
 /* ~~~~ JQUERY SEARCH ~~~~ */
 /* SEARCH */
@@ -30,8 +36,6 @@ $(document).ready(function () {
     source: searchData,
   });
 });
-
-
 
 // -----------------------------------------------------------
 
