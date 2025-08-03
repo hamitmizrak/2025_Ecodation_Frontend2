@@ -141,16 +141,60 @@ npm create vite@latest -y
 #### Artık CDN yerine node_modules/@fortawesome/fontawesome-free/css/all.min.css kullanabilirsin.
 
 
-#### Tek seferde birden fazla kütüphane eklemek
-npm install bootstrap jquery @popperjs/core wowjs animate.css sweetalert
+#### Tek seferde birden fazla kütüphane eklemek (--save)
+npm install bootstrap sass jquery jquery-ui @popperjs/core  --save
+npm install wowjs animate.css sweetalert2  counterup2  --save
+npm install @fortawesome/fontawesome-free  --save
+npm install gh-pages aos axios --save
 
-#### Bootstrap
+
+#### Tek seferde birden fazla kütüphane eklemek (--save-dev)
+npm install browser-sync eslint lite-server parcel prettier --save-dev
+
+####  DOSYALI (CDN'SIZ)
+    <!-- important dependencies -->
+    <!-- jquery -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Font Awesome (npm ile) -->
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css" />
+
+    <!-- jquery  -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="./node_modules/jquery-ui/dist/themes/base/jquery-ui.css" />
+
+    <!-- jQuery UI JS -->
+    <script src="./node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+
+#### CDN
 npm install bootstrap @popperjs/core
 Bootstrap5 Kullanımı:
 <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 ```
+
+    <!-- Google Font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CDN CSS v5.2.1 -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    /> -->
 
 ---
 
