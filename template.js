@@ -38,6 +38,38 @@ $(document).ready(function () {
 });
 
 // -----------------------------------------------------------
+// -----------------------------------------------------------
+/* ~~~~ JQUERY BACKTO_TOP SHOW/HIDE ~~~~ */
+/* BACKTO_TOP SHOW/HIDE */
+// jquery backto_top davranışını yavaş, göster, gizleme özelliğni  ekleyeceğiz
+$(document).ready(function () {
+  // backtop id almak
+  const backTop = $('#back_top_id');
+
+  // scrollTop mesafesi 80 olduğunda gizle
+  $(window).on('scroll', function () {
+    if ($(this).scrollTop() > 80) {
+      backTop.fadeIn(300);
+    } else {
+      backTop.fadeOut(300);
+    }
+  }); // end scroll
+
+  // Butona tıklayınca yukarı doğru çok yavaş (linear) kaydır
+  backTop.on('click', function (e) {
+    e.preventDefault();
+
+    $('html, body').animate(
+      { scrollTop: 0 },
+      1500, // 1,5 saniyede çok yavaş kayma
+      'linear', // sabit hızda yavaş ilerle
+      function () {
+        // Animasyon bitince butonu gizle
+        backTop.fadeOut(300);
+      }
+    );
+  });
+});
 
 // -----------------------------------------------------------
 /* ~~~~ JQUERY SEARCH ~~~~ */
@@ -51,10 +83,6 @@ $(document).ready(function () {});
 /* SEARCH */
 $(document).ready(function () {});
 // -----------------------------------------------------------
-
-// -----------------------------------------------------------
-/* ~~~~ JQUERY SEARCH ~~~~ */
-/* SEARCH */
 
 // -----------------------------------------------------------
 
