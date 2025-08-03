@@ -14,6 +14,60 @@ let,const  ==> Local
 */
 
 // -----------------------------------------------------------
+/* ~~~~ JAVASCRIPT ~~~~ */
+
+// -----------------------------------------------------------
+/* ~~~~ RÊGISTER~~~~ */
+/* RÊGISTER */
+document.addEventListener('DOMContentLoaded', () => {
+  const registerForm = document.getElementById('registerForm');
+
+  // Conditional
+  if (registerForm) {
+    registerForm.addEventListener('submit', (event) => {
+      // Forumun normal submit olmasını engellemek
+      event.preventDefault();
+
+      // Form elemanları alacağım.
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirmPassword').value.trim();
+      const termChecked = document.getElementById('terms').checked;
+
+      // Hata mesajları için tutmak dizi([])
+      const errors = [];
+
+      // Ad ve Soyad
+      // Email
+      // Password
+      // Confirm Password
+      // Checked
+    });
+  }
+});
+
+/* ~~~~ RÊGISTER~~~~ */
+/* RÊGISTER */
+document.addEventListener('DOMContentLoaded', () => {});
+
+// -----------------------------------------------------------
+/* ~~~~ FOOTER YEAR
+/* YEAR */
+// Arrow Function  ()=>{}
+document.addEventListener('DOMContentLoaded', () => {
+  const currentYear = new Date().getFullYear();
+  // alert(currentYear);
+  // console.log(currentYear);
+  const footerDate = document.getElementById('footer_year');
+  if (footerDate) {
+    footerDate.textContent = ` ${currentYear} ©️ Bütün haklar saklıdır`;
+  }
+});
+
+// -----------------------------------------------------------
+/* ~~~~ JQUERY ~~~~ */
+// -----------------------------------------------------------
 /* ~~~~ JQUERY SEARCH ~~~~ */
 /* SEARCH */
 // ready :
@@ -109,20 +163,6 @@ $(document).ready(function () {});
 /* SEARCH */
 
 // -----------------------------------------------------------
-
-// -----------------------------------------------------------
-/* ~~~~ FOOTER YEAR
-/* YEAR */
-// Arrow Function  ()=>{}
-document.addEventListener('DOMContentLoaded', () => {
-  const currentYear = new Date().getFullYear();
-  // alert(currentYear);
-  // console.log(currentYear);
-  const footerDate = document.getElementById('footer_year');
-  if (footerDate) {
-    footerDate.textContent = ` ${currentYear} ©️ Bütün haklar saklıdır`;
-  }
-});
 
 // -----------------------------------------------------------
 // -----------------------------------------------------------
