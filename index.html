@@ -994,52 +994,88 @@
     <!-- end  Main -->
 
     <!-- start  Footer -->
-    <footer id="footer_id">
-      <div class="footer-container">
-        <!-- 1.Sol Logo+Yazı -->
-        <div class="footer-column">
-          <img id="footer-logo" src="./images/coffee.jpg" alt="xyz.inc" target="_blank" />
-          <p class="footer-company-text">
-            xyz.inc Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, nemo.
-          </p>
-        </div>
+ <footer id="footer_id" class="pt-5">
+  <div class="footer-container container">
+    <div class="row">
+      <!-- 1. Sütun: Logo + Hakkında + Abone Ol -->
+      <div class="col-md-4 mb-4">
+        <img id="footer-logo" src="./images/coffee.jpg" alt="xyz.inc" class="mb-3" />
+        <p class="footer-company-text">
+          xyz.inc Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, nemo.
+        </p>
 
-        <!-- 2.Orta Linkler -->
-        <div class="footer-column">
-          <h3>Yararlı Link</h3>
-          <ul class="footer-link">
-            <li><a href="#scroll_spy_works">Çalışmalar</a></li>
-            <li><a href="#scroll_spy_success_rate">Başarılarımız</a></li>
-            <li><a href="#newspaper">Haberler</a></li>
-            <li><a href="#about">Hakkımızda</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#maps">İletişim</a></li>
-          </ul>
-        </div>
-
-        <!-- 3.Sağ Abone -->
-        <div class="footer-column">
-          <h3>Abone Ol</h3>
-          <form action="#" class="subscribe-form">
-            <div class="form-group">
-              <input class="form-control" type="email" placeholder="Email adresiniz ..." required />
-              <button type="submit" class="btn btn-primary">Abone ol</button>
-            </div>
-          </form>
-          <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <h5 class="mt-3">Abone Ol</h5>
+        <form class="subscribe-form">
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="E-mail adresiniz" required />
+            <button type="submit" class="btn btn-primary">Gönder</button>
           </div>
-        </div>
+        </form>
       </div>
 
-      <!-- Alt Kısım -->
-      <div class="footer-bottom">
-        2023-
-        <span id="footer_year"></span>
+      <!-- 2. Sütun: İletişim Formu -->
+      <div class="col-md-4 mb-4">
+        <h5>İletişim</h5>
+        <form id="contactForm" class="contact-form">
+          <div class="mb-2">
+            <input
+              type="text"
+              id="contactName"
+              class="form-control"
+              placeholder="Ad Soyad"
+              required
+            />
+          </div>
+          <div class="mb-2">
+            <input
+              type="email"
+              id="contactEmail"
+              class="form-control"
+              placeholder="E-posta"
+              required
+            />
+          </div>
+          <div class="mb-2">
+            <textarea
+              id="contactMessage"
+              class="form-control"
+              rows="3"
+              placeholder="Mesajınız"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning w-100">Gönder</button>
+        </form>
       </div>
-    </footer>
+
+      <!-- 3. Sütun: Linkler + Sosyal -->
+      <div class="col-md-4 mb-4">
+        <h5>Yararlı Linkler</h5>
+        <ul class="footer-link list-unstyled">
+          <li><a href="#scroll_spy_works">Çalışmalar</a></li>
+          <li><a href="#scroll_spy_success_rate">Başarılarımız</a></li>
+          <li><a href="#newspaper">Haberler</a></li>
+          <li><a href="#about">Hakkımızda</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#maps">İletişim</a></li>
+        </ul>
+
+        <div class="social-icons mt-3">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alt Kısım -->
+  <div class="footer-bottom text-center py-3">
+    2023-<span id="footer_year"></span>
+  </div>
+</footer>
+
+
 
     <!-- end  Footer -->
 
