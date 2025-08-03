@@ -20,6 +20,7 @@ let,const  ==> Local
 /* ~~~~ RÊGISTER~~~~ */
 /* RÊGISTER */
 document.addEventListener('DOMContentLoaded', () => {
+  // 1) Form elementini id ile seçiyoruz
   const registerForm = document.getElementById('registerForm');
 
   // Conditional
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Forumun normal submit olmasını engellemek
       event.preventDefault();
 
+      // Form varsa (sayfada bulunursa) dinleyiciyi ekliyoruz
       // Form elemanları alacağım.
       const fullName = document.getElementById('fullName').value.trim();
       const email = document.getElementById('email').value.trim();
@@ -35,14 +37,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const confirmPassword = document.getElementById('confirmPassword').value.trim();
       const termChecked = document.getElementById('terms').checked;
 
+      // 3) Hataları bir dizi içinde toplayacağız
       // Hata mesajları için tutmak dizi([])
       const errors = [];
 
       // Ad ve Soyad
+      // Ad Soyad en az 3 karakter olmalı
+
       // Email
+      // Email formatını regex ile kontrol ediyoruz
+      // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
       // Password
+      // Şifre uzunluğu
+
       // Confirm Password
+      // Şifre tekrar kontrolü
+
       // Checked
+      // Kullanım koşulları onayı
+
+      // 4) Sonuçları kontrol et
     });
   }
 });
