@@ -143,6 +143,15 @@ i:hover {
 }
 
 /* ################################################################################ */
+/* ~~~~  SWEET ALERT  ~~~~ */
+/* SweetAlert2 popup'ın her zaman ortada görünmesini garanti eder */
+.swal2-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ################################################################################ */
 /* ~~~~  NAVBAR FIRST   ~~~~ */
 /* ##################################################### */
 /* NAVBAR FIRST */
@@ -158,7 +167,6 @@ i:hover {
   width: 100%; /* Tüm yatay genişliği kaplar */
   opacity: 0.95; /* Hafif saydam görünüm */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Altında gölge efekti */
- 
 }
 
 /* Soldaki Register/Login linkleri */
@@ -702,8 +710,6 @@ footer {
   background-color: rgb(68, 255, 0);
   opacity: 0.9;
 }
-
-
 
 /* ################################################################################ */
 /* ~~~~     ~~~~ */

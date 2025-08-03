@@ -295,8 +295,9 @@
           </div>
 
           <!-- Modal Body -->
+          <!-- Modal Body -->
           <div class="modal-body">
-            <form id="loginForm">
+            <form id="loginForm" novalidate>
               <!-- Email -->
               <div class="mb-3">
                 <label for="loginEmail" class="form-label">Email</label>
@@ -307,6 +308,7 @@
                   placeholder="ornek@mail.com"
                   required
                 />
+                <div class="invalid-feedback"></div>
               </div>
 
               <!-- Şifre -->
@@ -319,6 +321,7 @@
                   placeholder="Şifrenizi girin"
                   required
                 />
+                <div class="invalid-feedback"></div>
               </div>
 
               <!-- Beni Hatırla -->
@@ -1041,7 +1044,7 @@
     <script src="./node_modules/wowjs/dist/wow.min.js"></script>
 
     <!-- SweetAlert -->
-    <script src="./node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <!-- WOW init -->
     <script>
