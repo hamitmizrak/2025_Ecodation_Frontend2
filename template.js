@@ -150,132 +150,196 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // -----------------------------------------------------------
-/* ~~~~ LOGIN ~~~~ */
-/* LOGIN */
+/* ########################### LOGIN & COOKIE & LOGOUT ########################### */
+/* ~~~~ LOGIN COOKIE ~~~~ */
+/* ########################### LOGIN & LOGOUT ########################### */
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
-  if (!loginForm) return;
-
   const LOGIN_ATTEMPTS_KEY = 'loginAttempts';
-  const REMEMBER_EMAIL_KEY = 'rememberedEmail';
+  const REMEMBER_COOKIE = 'rememberedEmail';
 
-  // Eğer önceden "Beni Hatırla" ile email kaydedildiyse doldur
-  const rememberedEmail = localStorage.getItem(REMEMBER_EMAIL_KEY);
-  if (rememberedEmail) {
+  // Cookie yardımcı fonksiyonları
+  function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+    const expires = 'expires=' + d.toUTCString();
+    document.cookie = name + '=' + encodeURIComponent(value) + ';' + expires + ';path=/';
+  }
+  function getCookie(name) {
+    const cname = name + '=';
+    const decoded = decodeURIComponent(document.cookie);
+    const arr = decoded.split(';');
+    for (let c of arr) {
+      while (c.charAt(0) === ' ') c = c.substring(1);
+      if (c.indexOf(cname) === 0) return c.substring(cname.length, c.length);
+    }
+    return '';
+  }
+
+  // Navbar güncelleme fonksiyonu
+  function updateNavbarForLoginStatus() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const registerLink = document.querySelector('a[data-bs-target="#registerId"]');
+    const loginLink = document.querySelector('a[data-bs-target="#loginId"]');
+    const adminLink = document.getElementById('adminLink');
+    const logoutLink = document.getElementById('logoutLink');
+
+    if (isLoggedIn) {
+      if (registerLink) registerLink.style.display = 'none';
+      if (loginLink) loginLink.style.display = 'none';
+      if (adminLink) adminLink.style.display = 'block';
+      if (logoutLink) logoutLink.style.display = 'block';
+    } else {
+      if (registerLink) registerLink.style.display = 'block';
+      if (loginLink) loginLink.style.display = 'block';
+      if (adminLink) adminLink.style.display = 'none';
+      if (logoutLink) logoutLink.style.display = 'none';
+    }
+  }
+
+  // Sayfa açıldığında navbar'ı güncelle
+  updateNavbarForLoginStatus();
+
+  // Logout event
+  const logoutLink = document.getElementById('logoutLink');
+  if (logoutLink) {
+    logoutLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      Swal.fire({
+        icon: 'question',
+        title: 'Çıkış Yap',
+        text: 'Çıkış yapmak istediğinize emin misiniz?',
+        showCancelButton: true,
+        confirmButtonText: 'Evet',
+        cancelButtonText: 'Hayır',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('isLoggedIn');
+          updateNavbarForLoginStatus();
+          Swal.fire({
+            icon: 'success',
+            title: 'Çıkış Yapıldı',
+            timer: 2000,
+            showConfirmButton: false,
+          });
+        }
+      });
+    });
+  }
+
+  // Sayfa açıldığında rememberedEmail varsa doldur
+  const rememberedEmail = getCookie(REMEMBER_COOKIE);
+  if (rememberedEmail && document.getElementById('loginEmail')) {
     document.getElementById('loginEmail').value = rememberedEmail;
     document.getElementById('rememberMe').checked = true;
   }
 
+  // Hata temizleme fonksiyonu
   const clearError = (field) => {
     field.classList.remove('is-invalid');
     const feedback = field.parentElement.querySelector('.invalid-feedback');
     if (feedback) feedback.textContent = '';
   };
 
-  loginForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+  if (loginForm) {
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
 
-    const emailInput = document.getElementById('loginEmail');
-    const passwordInput = document.getElementById('loginPassword');
-    const rememberMe = document.getElementById('rememberMe');
+      const emailInput = document.getElementById('loginEmail');
+      const passwordInput = document.getElementById('loginPassword');
+      const rememberMe = document.getElementById('rememberMe');
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
 
-    // Alanlardaki eski hataları temizle
-    clearError(emailInput);
-    clearError(passwordInput);
+      clearError(emailInput);
+      clearError(passwordInput);
 
-    let attempts = parseInt(localStorage.getItem(LOGIN_ATTEMPTS_KEY) || '0', 10);
-
-    // 3 yanlış girişte kilit
-    if (attempts >= 3) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Hesap Kilitli',
-        text: '3 defa yanlış giriş yaptınız. Hesabınız kilitlendi!',
-        confirmButtonText: 'Tamam',
-      });
-      return;
-    }
-
-    // Kayıtlı kullanıcı bilgileri
-    const storedUser = JSON.parse(localStorage.getItem('registerData') || '{}');
-
-    let hasError = false;
-
-    // Alan boş mu?
-    if (!email) {
-      emailInput.classList.add('is-invalid');
-      emailInput.parentElement.querySelector('.invalid-feedback').textContent =
-        'Email alanı boş bırakılamaz.';
-      hasError = true;
-    }
-
-    if (!password) {
-      passwordInput.classList.add('is-invalid');
-      passwordInput.parentElement.querySelector('.invalid-feedback').textContent =
-        'Şifre alanı boş bırakılamaz.';
-      hasError = true;
-    }
-
-    if (hasError) return;
-
-    // Email ve şifre kontrolü
-    if (storedUser.email === email && storedUser.password === password) {
-      localStorage.setItem(LOGIN_ATTEMPTS_KEY, '0'); // Deneme sayısını sıfırla
-
-      // Beni Hatırla seçiliyse email kaydet, değilse sil
-      if (rememberMe.checked) {
-        localStorage.setItem(REMEMBER_EMAIL_KEY, email);
-      } else {
-        localStorage.removeItem(REMEMBER_EMAIL_KEY);
+      let attempts = parseInt(localStorage.getItem(LOGIN_ATTEMPTS_KEY) || '0', 10);
+      if (attempts >= 3) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Hesap Kilitli',
+          text: '3 defa yanlış giriş yaptınız. Hesabınız kilitlendi!',
+        });
+        return;
       }
 
-      // SweetAlert ile başarılı giriş bildir
-      Swal.fire({
-        title: 'Giriş Başarılı',
-        icon: 'success',
-        html: 'Admin sayfasına yönlendiriliyorsunuz... <br><b></b> saniye içinde',
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: () => {
-          const content = Swal.getHtmlContainer().querySelector('b');
-          setInterval(() => {
-            const timeLeft = Math.ceil(Swal.getTimerLeft() / 1000);
-            content.textContent = timeLeft;
-          }, 100);
-        },
-      }).then(() => {
-        window.location.href = 'admin/admin.html';
-      });
+      const storedUser = JSON.parse(localStorage.getItem('registerData') || '{}');
 
-      loginForm.reset();
-    } else {
-      // Yanlış giriş
-      attempts++;
-      localStorage.setItem(LOGIN_ATTEMPTS_KEY, attempts.toString());
+      let hasError = false;
 
-      const kalan = 3 - attempts;
-      const hataMesaji =
-        kalan > 0
-          ? `Kullanıcı adı veya şifre yanlış. Kalan deneme hakkınız: ${kalan}`
-          : '3 defa yanlış giriş yaptınız. Hesabınız kilitlendi!';
+      if (!email) {
+        emailInput.classList.add('is-invalid');
+        emailInput.parentElement.querySelector('.invalid-feedback').textContent =
+          'Email alanı boş bırakılamaz.';
+        hasError = true;
+      }
 
-      Swal.fire({
-        icon: 'error',
-        title: 'Giriş Hatalı',
-        text: hataMesaji,
-        confirmButtonText: 'Tamam',
-      });
+      if (!password) {
+        passwordInput.classList.add('is-invalid');
+        passwordInput.parentElement.querySelector('.invalid-feedback').textContent =
+          'Şifre alanı boş bırakılamaz.';
+        hasError = true;
+      }
 
-      passwordInput.classList.add('is-invalid');
-      passwordInput.parentElement.querySelector('.invalid-feedback').textContent =
-        'Kullanıcı adı veya şifre yanlış.';
-    }
-  });
+      if (hasError) return;
+
+      if (storedUser.email === email && storedUser.password === password) {
+        // Giriş başarılı
+        localStorage.setItem(LOGIN_ATTEMPTS_KEY, '0');
+
+        // Beni hatırla
+        if (rememberMe.checked) {
+          setCookie(REMEMBER_COOKIE, email, 7);
+        } else {
+          setCookie(REMEMBER_COOKIE, '', -1);
+        }
+
+        localStorage.setItem('isLoggedIn', 'true');
+        updateNavbarForLoginStatus();
+
+        Swal.fire({
+          title: 'Giriş Başarılı',
+          icon: 'success',
+          html: 'Admin sayfasına yönlendiriliyorsunuz... <br><b></b> saniye içinde',
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: () => {
+            const content = Swal.getHtmlContainer().querySelector('b');
+            setInterval(() => {
+              const timeLeft = Math.ceil(Swal.getTimerLeft() / 1000);
+              content.textContent = timeLeft;
+            }, 100);
+          },
+        }).then(() => {
+          window.location.href = 'admin/admin.html';
+        });
+
+        loginForm.reset();
+      } else {
+        attempts++;
+        localStorage.setItem(LOGIN_ATTEMPTS_KEY, attempts.toString());
+
+        const kalan = 3 - attempts;
+        const hataMesaji =
+          kalan > 0
+            ? `Kullanıcı adı veya şifre yanlış. Kalan deneme hakkınız: ${kalan}`
+            : '3 defa yanlış giriş yaptınız. Hesabınız kilitlendi!';
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Giriş Hatalı',
+          text: hataMesaji,
+        });
+
+        passwordInput.classList.add('is-invalid');
+        passwordInput.parentElement.querySelector('.invalid-feedback').textContent =
+          'Kullanıcı adı veya şifre yanlış.';
+      }
+    });
+  }
 });
-
 
 // -----------------------------------------------------------
 /* ~~~~ FOOTER YEAR

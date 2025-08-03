@@ -147,7 +147,6 @@ npm install wowjs animate.css sweetalert2  counterup2  --save
 npm install @fortawesome/fontawesome-free  --save
 npm install gh-pages aos axios --save
 
-
 #### Tek seferde birden fazla kütüphane eklemek (--save-dev)
 npm install browser-sync eslint lite-server parcel prettier --save-dev
 
