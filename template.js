@@ -7,6 +7,8 @@ Project name: jquery with web design
 - Summary     : 
 */
 
+const { default: Swal } = require("sweetalert2");
+
 /*
 JS Variable
 var ==> Global
@@ -43,20 +45,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Ad ve Soyad
       // Ad Soyad en az 3 karakter olmalı
+      if (fullName.length < 3) {
+        errors.push('Ad veya soyad en az 3 karakter oalcaktır.');
+      }
 
       // Email
       // Email formatını regex ile kontrol ediyoruz
-      // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        errors.push('Geçerli bir email adresi giriniz');
+      }
 
       // Password
       // Şifre uzunluğu
+      if (password.length < 6) {
+        errors.push('Şifre en az 7 karakterli olmalıdır');
+      }
 
       // Confirm Password
       // Şifre tekrar kontrolü
+      if (password !== confirmPassword) {
+        errors.push('şifreler eşlemişmiyor');
+      }
 
       // Checked
       // Kullanım koşulları onayı
+      if (!termChecked) {
+        errors.push('kullanım koşullarını kabul etmediniz.');
+      }
 
+      // Hataları kontrol et
+      if (errors.length > 0) {
+        // Sweetalert2 ile hata mesajını göster
+        Swal.fire({
+          title:'Form Hataları',
+          html: errors.join('<br>'), // satırları <br> ile ayrık
+          icon : 'error',
+          confirmButtonText: 'Tamam'
+        })
+      }else{
+        // Sweetalert2 ile başarı mesajını göster
+        Swal.fire({
+          title: 'Başarılı',
+          text: 'Kayıt işlemi başarılı',
+          icon: 'success',
+          confirmButtonText: 'Tamam',
+        });
+      }
       // 4) Sonuçları kontrol et
     });
   }
